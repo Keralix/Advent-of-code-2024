@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
 const returnInputs = () => {
-  let input = readFileSync("./day-one-input.txt", "utf-8").replace(
+  let input = readFileSync("./day-1/day-one-input.txt", "utf-8").replace(
     /(\r\n|\n|\r)/gm,
     "   "
   );
