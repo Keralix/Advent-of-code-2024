@@ -1,11 +1,4 @@
 import { readFileSync } from "fs";
-import { start } from "repl";
-import {
-  isAnyArrayBuffer,
-  isArrayBuffer,
-  isInt16Array,
-  isInt8Array,
-} from "util/types";
 
 const returnInputs = () => {
   let input = readFileSync("./day-2/day-two-input.txt", "utf-8").split("\r\n");
@@ -20,10 +13,8 @@ const returnInputs = () => {
 function isSafe(report) {
   let ascen = report[0] - report[1];
   let safe = true;
-  console.log(ascen);
   for (let i = 0; i < report.length - 1; i++) {
     const diff = report[i] - report[i + 1];
-    console.log(diff);
     if (Math.abs(diff) < 1 || Math.abs(diff) > 3 || diff * ascen <= 0) {
       safe = false;
       break;
