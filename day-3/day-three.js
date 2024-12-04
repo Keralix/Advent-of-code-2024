@@ -1,4 +1,3 @@
-import { match } from "assert";
 import { readFileSync } from "fs";
 
 function readInputFile() {
