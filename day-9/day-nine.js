@@ -1,5 +1,4 @@
 import { readFileSync } from "fs";
-import { start } from "repl";
 
 function getDiskMap() {
   return readFileSync("./day-9/day-nine-input.txt", "utf-8");
