@@ -48,17 +48,29 @@ for (let i = 0; i < input.length; i++) {
     vy: Number(robot[3]),
   };
 }
-for (let i = 0; i < 100; i++) {
-  moveRobots();
-}
+
 let xOs = Math.floor(width / 2);
 let yOs = Math.floor(height / 2);
 let inQuadrants = [0, 0, 0, 0];
-for (let i = 0; i < input.length; i++) {
-  checkQuadrants(robots[i]);
+
+let minSafe;
+let safetyFactor;
+let iteration = 0;
+for (let i = 0; i < width * height; i++) {
+  moveRobots();
+  safetyFactor = 1;
+  inQuadrants = [0, 0, 0, 0];
+  for (let j = 0; j < input.length; j++) {
+    checkQuadrants(robots[j]);
+  }
+  for (let z = 0; z < 4; z++) {
+    safetyFactor *= inQuadrants[z];
+  }
+  console.log(safetyFactor);
+  if (minSafe === undefined || minSafe > safetyFactor) {
+    minSafe = safetyFactor;
+    iteration = i;
+  }
 }
-let safftyFactor = 1;
-for (let i = 0; i < 4; i++) {
-  safftyFactor *= inQuadrants[i];
-}
-console.log(safftyFactor);
+
+console.log(iteration + 1);
